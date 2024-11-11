@@ -18,5 +18,19 @@ namespace Sbuchea_Tudor_Lab2.Data
         public DbSet<Sbuchea_Tudor_Lab2.Models.Publisher> Publisher { get; set; } = default!;
         public DbSet<Sbuchea_Tudor_Lab2.Models.Authors> Authors { get; set; } = default!;
         public DbSet<Sbuchea_Tudor_Lab2.Models.Category> Category { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Borrowing>()
+                .HasOne(bw => bw.Book)
+                .WithMany(b => b.Borrowings)
+                .HasForeignKey(bw => bw.BookID);
+
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<Sbuchea_Tudor_Lab2.Models.Member> Member { get; set; } = default!;
+        public DbSet<Sbuchea_Tudor_Lab2.Models.Borrowing> Borrowing { get; set; } = default!;
+
+
     }
 }

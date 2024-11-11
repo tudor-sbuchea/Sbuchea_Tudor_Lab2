@@ -6,6 +6,7 @@ namespace Sbuchea_Tudor_Lab2.Models
 {
     public class Book
     {
+
         public int ID { get; set; }
         [Display(Name = "Book Title")]
         public string Title { get; set; }
@@ -18,6 +19,7 @@ namespace Sbuchea_Tudor_Lab2.Models
         public int? AuthorID { get; set; }
         public Authors? Author { get; set; }
 
+        public ICollection<Borrowing>? Borrowings { get; set; }
         public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }
